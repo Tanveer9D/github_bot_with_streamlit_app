@@ -1,20 +1,16 @@
 import os
 import requests
 import streamlit as st
-from dotenv import load_dotenv
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
 from langchain.vectorstores import FAISS
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chains import RetrievalQA
 
-# Load environment variables
-load_dotenv()
-
-# Constants
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
-ORG_NAME = os.getenv("ORG_NAME")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# Load secrets from Streamlit Cloud
+GITHUB_TOKEN = st.secrets["GITHUB_TOKEN"]
+ORG_NAME = st.secrets["ORG_NAME"]
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
 
 # Headers for GitHub API
